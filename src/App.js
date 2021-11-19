@@ -3,6 +3,8 @@ import './App.css';
 import { css, Global } from "@emotion/react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Home } from './pages/Home';
+import { Student } from './pages/Student';
+
 
 const cssGlobal = css`
   @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&family=Lato&family=Comic+Neue:wght@400;700&display=swap');
@@ -34,6 +36,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route  path="/students/:id/description" component={Student} />
         </Switch>
       </Router>
     </main>

@@ -43,7 +43,7 @@ const Card = styled.div`
 
 export function StudentItem(props) {
   return (
-    <Card>
+    <Card key={props.key}>
         <Name>{props.name}</Name>
         <Price>${props.salary}</Price>
         <Description>{props.job_name}</Description>

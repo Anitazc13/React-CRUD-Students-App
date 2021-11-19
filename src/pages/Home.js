@@ -2,6 +2,8 @@ import styled from "@emotion/styled";
 import { useEffect, useState } from 'react';
 import { StudentItem } from "../components/StudentItem";
 import { getAllStudents } from '../services/StudentFetcher';
+import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Page = styled.div`
   display: flex;
@@ -41,12 +43,14 @@ export function Home() {
     <Page>
       <List>
         {students.map((student) => (
-            <StudentItem
-              key={student["ID"]}
-              name={student["NAME"]}
-              salary={student["SALARY"]}
-              job_name={student["JOB_NAME"]} 
-            />
+            <Link to={`/students/${student["ID"]}/description`} key={student["ID"]}>
+                <StudentItem
+                key={student["ID"]}
+                name={student["NAME"]}
+                salary={student["SALARY"]}
+                job_name={student["JOB_NAME"]} 
+                />
+            </Link>
         ))}
       </List>
     </Page>
