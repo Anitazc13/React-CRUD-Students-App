@@ -1,7 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [books,setBooks] =useState([])
+  useEffect(()=>{
+    fetch('http://localhost:5000/api/students')
+    .then(res=>res.json())
+    .then(res=>setBooks(res))
+  },[])
+  console.log(books)
   return (
     <div className="App">
       <header className="App-header">
