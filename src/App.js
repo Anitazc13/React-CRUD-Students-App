@@ -1,13 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
+import { getAllStudents } from './services/StudentFetcher';
 
 function App() {
   const [books,setBooks] =useState([])
   useEffect(()=>{
-    fetch('http://localhost:5000/api/students')
-    .then(res=>res.json())
-    .then(res=>setBooks(res))
+   getAllStudents().then(res=>console.log(res)).then(res=>setBooks(res))
   },[])
   console.log(books)
   return (
