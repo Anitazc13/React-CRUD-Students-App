@@ -14,28 +14,12 @@ const Page = styled.div`
   align-items: center;
 `;
 
-const List = styled.div`
-  display: flex;
-  width: 100%;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-  height: 480px;
-  margin-bottom: 15px;
-  margin-left:20px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  ::-webkit-scrollbar {
-    display: display;
-    width: 20px;
-    color:green;
-  }
-  --ms-overflow-style: none;
-  scrollbar-width: none;
-  a {
-    text-decoration: none;
-    color: #333333;
-  }
+const DivTable = styled.div`
+  height: 70%;
+  width:100%;
+  padding:0px;
+  overflow-y: auto;
+  margin-bottom:25px;
 `;
 
 export function Home() {
@@ -56,22 +40,38 @@ export function Home() {
     history.push("/students/new")
   }
 
+  function ShowStudent(id){
+    history.push(`/students/${id}/description`)
+  }
+
   return (
     <Page>
       <FontTitle>CRUD Students</FontTitle>
-      <List>
-        {students.map((student) => (
-            <Link to={`/students/${student["ID"]}/description`} key={student["ID"]}>
-                <StudentItem
-                key={student["ID"]}
-                name={student["NAME"]}
-                salary={student["SALARY"]}
-                job_name={student["JOB_NAME"]} 
-                />
-            </Link>
-        ))}    
-      </List>
-        <ButtonGreen onClick = {createOneMore}>Create one more</ButtonGreen>
+        <DivTable>
+          <table className="table table-hover">
+            <thead className="table-active">
+                      <tr>
+                          <th>ID</th>
+                          <th>Name</th>
+                          <th>Action</th>
+                      </tr>
+                  </thead>
+            <tbody>
+              {students.map((student) => (
+                    <tr key={student["ID"]}>
+                              <td>{student["ID"]}</td>
+                              <td>{student["NAME"]}</td>
+                              <td>
+                                  <div className="mb-3">
+                                      <button className="btn btn-success" onClick={() => ShowStudent(student["ID"])}>Show</button>
+                                  </div>
+                              </td>
+                    </tr>
+              ))}    
+            </tbody>
+          </table>
+          </DivTable>
+        <button className="btn btn-success"  onClick = {createOneMore}>Create one more</button>
     </Page>
   );
 }

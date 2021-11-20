@@ -28,8 +28,6 @@ const Card = styled.div`
     display: flex;
     flex-direction: column;
     gap: 8px;
-    width: 120px;
-    height: 100px;
     align-items: center;
     background: #FFFFFF;
     box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
@@ -44,7 +42,6 @@ export function StudentItem(props) {
   return (
     <Card key={props.key}>
         <Name>{props.name}</Name>
-        <Price>${props.salary}</Price>
         <Description>{props.job_name}</Description>
     </Card>
   );
