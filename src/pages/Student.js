@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import styled from "@emotion/styled";
 import { StudentItem } from '../components/StudentItem';
-import { showStudent } from '../services/StudentFetcher';
+import { deleteStudent, showStudent } from '../services/StudentFetcher';
 import { useLocation } from 'react-router';
 
 const StyledDiv = styled.div`
@@ -48,11 +48,16 @@ export function Student(){
     GetData();
   },[]);
 
+  async function destroyStudent(e){
+    await deleteStudent(location.pathname.split("/")[2]);
+  }
+
   return (
     <StyledDiv>
       <div className="container">
         <div className="optionChange">
-          <a href="/updatestudent">change</a>
+          <a href={`/students/${location.pathname.split("/")[2]}/updatestudent`}>change</a>
+          <a href="/" onClick={destroyStudent}>delete</a>
         </div>
         <StudentItem
           name={infouser["NAME"]}

@@ -4,6 +4,7 @@ import { css, Global } from "@emotion/react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Home } from './pages/Home';
 import { Student } from './pages/Student';
+import { UpdateProfile, UpdateStudent } from './pages/UpdateStudent';
 
 
 const cssGlobal = css`
@@ -21,8 +22,9 @@ const cssGlobal = css`
   main {
     display: flex;
     justify-content: center;
-    width: 100%;
-    height: 100%;
+    width:360px;
+    height: 640px;
+    border: 1px solid black;
   }
 `;
 
@@ -37,6 +39,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route  path="/students/:id/description" component={Student} />
+          <Route  path="/students/:id/updatestudent" component={UpdateProfile} />
         </Switch>
       </Router>
     </main>
