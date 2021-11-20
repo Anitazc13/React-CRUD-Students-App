@@ -4,6 +4,8 @@ import { StudentItem } from "../components/StudentItem";
 import { getAllStudents } from '../services/StudentFetcher';
 import { NavLink, Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { ButtonGreen } from "../components/UI/Buttons";
+import { useHistory } from 'react-router';
 
 const Page = styled.div`
   display: flex;
@@ -12,14 +14,24 @@ const Page = styled.div`
 `;
 
 const List = styled.div`
-  margin-top: 134px;
+  margin-top: 74px;
   display: flex;
   width: 100%;
   gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 160px;
-  overflow-y: hidden; margin-bottom: 12px;
+  height: 480px;
+  margin-bottom: 23px;
+  margin-left:20px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  ::-webkit-scrollbar {
+    display: display;
+    width: 20px;
+    color:green;
+  }
+  --ms-overflow-style: none;
+  scrollbar-width: none;
   a {
     text-decoration: none;
     color: #333333;
@@ -28,7 +40,7 @@ const List = styled.div`
 
 export function Home() {
   const [students, setStudents] = useState([]);
-
+  const history = useHistory();
   useEffect(() => {
     const getData = async () => {
       const response = await getAllStudents();
@@ -39,6 +51,10 @@ export function Home() {
   }, [
 
   ]);
+
+  function createOneMore(e){
+    history.push("/students/new")
+  }
 
   return (
     <Page>
@@ -54,9 +70,7 @@ export function Home() {
             </Link>
         ))}    
       </List>
-      <NavLink to="students/new">
-        <button>Create one more student</button>
-      </NavLink>
+        <ButtonGreen onClick = {createOneMore}>Create one more</ButtonGreen>
     </Page>
   );
 }

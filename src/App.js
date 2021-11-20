@@ -10,6 +10,7 @@ import { CreateProfile } from './pages/CreateStudent';
 
 const cssGlobal = css`
   @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&family=Lato&family=Comic+Neue:wght@400;700&display=swap');
+  @import url("https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap");
   * {
     font-family: 'Source Sans Pro', sans-serif;
     margin: 0;

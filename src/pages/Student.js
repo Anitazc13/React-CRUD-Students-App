@@ -29,7 +29,7 @@ const StyledDiv = styled.div`
           font-size: 16px;
           line-height: 20px;
           cursor: pointer;
-          color: #FA4A0C;
+          color: green;
         }
       }
     }

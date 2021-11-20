@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styled from "@emotion/styled";
-import { useHistory, useLocation } from 'react-router';
+import {  useHistory, useLocation } from 'react-router';
 import { showStudent, updateStud} from '../services/StudentFetcher';
+import { ButtonGreen } from '../components/UI/Buttons';
 
 const ContainerForm = styled.form`
     display: flex;
@@ -50,11 +51,9 @@ const StyledDiv = styled.div`
 `
 
 export function UpdateProfile(){
-    const [name, SetName] = useState();
-    const [salary,SetSalary] = useState();
-    const [job_name,SetJobName] = useState();
     const [infouser, SetInfouser] = useState([]);
     const location = useLocation();
+    const history = useHistory();
   useEffect(() => {
     showStudent(location.pathname.split("/")[2]).then(datauser => SetInfouser(datauser));
   },[])
@@ -65,37 +64,37 @@ export function UpdateProfile(){
     let newsalary = e.target.elements.salary.value;
     let newjobName = e.target.elements.job_name.value;
     let forminfo= {"NAME": newname, "SALARY": newsalary,"JOB_NAME": newjobName};
-    console.log(forminfo)
-    const response= await updateStud((location.pathname.split("/")[2]),forminfo);
-    console.log(response);
+    history.push("/")
+    await updateStud((location.pathname.split("/")[2]),forminfo);
+    
     }
 
   return (
     <StyledDiv>
       <div className="container">
-        <label>Update personal details</label>
+        <label>Update personal Information for Student</label>
         <ContainerForm onSubmit={handleSubmit}>
         <div className="infoPersonal">
           <ContainerInfo>
             <input
               name="name"
               type="text"
-              placeholder="Ana Maria"
+              placeholder= {infouser.NAME}
             ></input>
             <input
               name="salary"
-              type="salary"
-              placeholder="1500"
+              type="number"
+              placeholder={infouser.SALARY}
             ></input>
             <input
               name="job_name"
-              type="job_name"
-              placeholder="Full stack developer"
-            ></input>
+              type="text"
+              placeholder={infouser.JOB_NAME}
+              ></input>
           </ContainerInfo>
         </div>
         <div>
-          <button>Update</button>
+          <ButtonGreen>Update</ButtonGreen>
         </div>
       </ContainerForm>
       </div>

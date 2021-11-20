@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from "@emotion/styled";
 import { useHistory, useLocation } from 'react-router';
 import { createStudent } from '../services/StudentFetcher';
+import { ButtonGreen } from '../components/UI/Buttons';
 
 const ContainerForm = styled.form`
     display: flex;
@@ -59,9 +60,7 @@ export function CreateProfile(){
         let newsalary = e.target.elements.salary.value;
         let newjobName = e.target.elements.job_name.value;
         let forminfo= {"NAME": newname, "SALARY": newsalary,"JOB_NAME": newjobName};
-        console.log(forminfo)
         const response= await createStudent(forminfo);
-        console.log(response);
         history.push("/")
     }
 
@@ -90,7 +89,7 @@ export function CreateProfile(){
           </ContainerInfo>
         </div>
         <div>
-            <button>Crear</button>
+            <ButtonGreen>Create</ButtonGreen>
         </div>
       </ContainerForm>
       </div>
