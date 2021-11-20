@@ -1,13 +1,13 @@
 import styled from "@emotion/styled";
 
-const Name = styled.h3`
+export const Name = styled.h3`
   font-weight: 600;
   font-size: 18px;
   line-height: 28px;
   color: #333333;
   margin: 0;
 `
-const Price = styled.p`
+export const Price = styled.p`
   font-weight: 600;
   font-size: 20px;
   line-height: 28px;
@@ -15,7 +15,7 @@ const Price = styled.p`
   margin: 0;
   `
 
-const Description  = styled.p`
+export const Description  = styled.p`
   font-weight: 400;
   font-size: 18px;
   line-height: 28px;
