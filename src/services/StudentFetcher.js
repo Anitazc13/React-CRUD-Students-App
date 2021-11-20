@@ -17,12 +17,11 @@ export function getAllStudents(){
   export function createStudent(data){
     return fetch(
         (`http://localhost:5000/api/students/`), {
-      "method": "POST",
-      "headers":  {
-        "Content-Type": "application/json"
-      },
-      "body":data
-    })
+            method: 'post',
+            headers: {"Accept": "application/json",
+                'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        })
     .then((res) => res.json())
   }
 

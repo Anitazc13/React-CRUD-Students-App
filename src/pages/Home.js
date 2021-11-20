@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { useEffect, useState } from 'react';
 import { StudentItem } from "../components/StudentItem";
 import { getAllStudents } from '../services/StudentFetcher';
-import { Redirect } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const Page = styled.div`
@@ -19,6 +19,7 @@ const List = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 160px;
+  overflow-y: hidden; margin-bottom: 12px;
   a {
     text-decoration: none;
     color: #333333;
@@ -51,8 +52,11 @@ export function Home() {
                 job_name={student["JOB_NAME"]} 
                 />
             </Link>
-        ))}
+        ))}    
       </List>
+      <NavLink to="students/new">
+        <button>Create one more student</button>
+      </NavLink>
     </Page>
   );
 }

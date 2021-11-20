@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Home } from './pages/Home';
 import { Student } from './pages/Student';
 import { UpdateProfile, UpdateStudent } from './pages/UpdateStudent';
+import { CreateProfile } from './pages/CreateStudent';
 
 
 const cssGlobal = css`
@@ -40,6 +41,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route  path="/students/:id/description" component={Student} />
           <Route  path="/students/:id/updatestudent" component={UpdateProfile} />
+          <Route  path="/students/new" component={CreateProfile} />
         </Switch>
       </Router>
     </main>
