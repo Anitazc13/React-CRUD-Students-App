@@ -42,6 +42,7 @@ export function StudentItem(props) {
   return (
     <Card key={props.key}>
         <Name>{props.name}</Name>
+        <Price>{props.salary}</Price>
         <Description>{props.job_name}</Description>
     </Card>
   );
