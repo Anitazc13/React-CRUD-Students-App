@@ -6,6 +6,7 @@ import { NavLink, Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { ButtonGreen } from "../components/UI/Buttons";
 import { useHistory } from 'react-router';
+import { FontTitle } from "../components/UI/Typography";
 
 const Page = styled.div`
   display: flex;
@@ -14,14 +15,13 @@ const Page = styled.div`
 `;
 
 const List = styled.div`
-  margin-top: 74px;
   display: flex;
   width: 100%;
   gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
   height: 480px;
-  margin-bottom: 23px;
+  margin-bottom: 15px;
   margin-left:20px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -58,6 +58,7 @@ export function Home() {
 
   return (
     <Page>
+      <FontTitle>CRUD Students</FontTitle>
       <List>
         {students.map((student) => (
             <Link to={`/students/${student["ID"]}/description`} key={student["ID"]}>

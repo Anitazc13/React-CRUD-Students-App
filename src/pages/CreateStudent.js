@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { useHistory, useLocation } from 'react-router';
 import { createStudent } from '../services/StudentFetcher';
 import { ButtonGreen } from '../components/UI/Buttons';
+import { FontTitle } from '../components/UI/Typography';
 
 const ContainerForm = styled.form`
     display: flex;
@@ -44,7 +45,7 @@ const StyledDiv = styled.div`
     flex: 2;
     display: flex;
     flex-direction: column;
-    gap: 38px;
+    gap: 10px;
     }
     margin-top: 50px;
     
@@ -60,14 +61,14 @@ export function CreateProfile(){
         let newsalary = e.target.elements.salary.value;
         let newjobName = e.target.elements.job_name.value;
         let forminfo= {"NAME": newname, "SALARY": newsalary,"JOB_NAME": newjobName};
-        const response= await createStudent(forminfo);
+        await createStudent(forminfo);
         history.push("/")
     }
 
   return (
     <StyledDiv>
       <div className="container">
-        <label>Update personal details</label>
+        <FontTitle>New Student</FontTitle>
         <ContainerForm onSubmit={handleSubmit}>
         <div className="infoPersonal">
           <ContainerInfo>
